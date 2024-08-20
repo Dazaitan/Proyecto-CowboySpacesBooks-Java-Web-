@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controlador;
+package controlador.persona;
 
 import conexion.Conexion;
 import java.io.IOException;
@@ -12,14 +12,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.Libro;
+import modelo.Usuario;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "EliminarLibro", urlPatterns = {"/EliminarLibro"})
-public class EliminarLibro extends HttpServlet {
+@WebServlet(name = "ActualizarPersona", urlPatterns = {"/ActualizarPersona"})
+public class ActualizarPersona extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +34,18 @@ public class EliminarLibro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            request.setCharacterEncoding("UTF-8");
-            Conexion conexion = new Conexion();
-            Libro libro = new Libro();
-            libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
+            Usuario user = new Usuario();
+            user.setIdentificacion(Integer.parseInt(request.getParameter("identificacion")));
+            user.setNombre(request.getParameter("nombre"));
+            user.setApellido(request.getParameter("apellido"));
+            user.setEmail(request.getParameter("email"));
+            user.setContrasena(request.getParameter("contrasena"));
             
-            conexion.insertarActualizarEliminar(libro.eliminarLibro());
+            
+            Conexion conexion = new Conexion();
+            conexion.insertarActualizarEliminar(user.actualizar());
+            conexion.cerrar();
+            response.sendRedirect("inicio/home.jsp");
         }
     }
 

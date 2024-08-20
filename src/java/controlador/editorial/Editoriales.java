@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controlador;
+package controlador.editorial;
 
-import conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,43 +11,27 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDate;
-import modelo.Libro;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "InsertarLibro", urlPatterns = {"/InsertarLibro"})
-public class InsertarLibro extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+@WebServlet(name = "Editoriales", urlPatterns = {"/Editoriales"})
+public class Editoriales extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            request.setCharacterEncoding("UTF-8");
-            Conexion conexion = new Conexion();
-            Libro libro = new Libro();
-            libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
-            libro.setTitulo(request.getParameter("titulo"));
-            libro.setnPaginas(Integer.parseInt(request.getParameter("numPaginas")));
-            libro.setCategoria(request.getParameter("categoria"));
-            libro.setDescripcion(request.getParameter("descripcion"));
-            libro.setEstado(request.getParameter("estado"));
-            libro.setIdioma(request.getParameter("idioma"));
-            libro.setFecha(LocalDate.parse(request.getParameter("fecha")));
-            
-            conexion.insertarActualizarEliminar(libro.insertarLibroNuevo());
-            conexion.cerrar();
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Editoriales</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Editoriales at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

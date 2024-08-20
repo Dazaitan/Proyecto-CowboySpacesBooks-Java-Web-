@@ -11,6 +11,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Ingresar Datos del Libro</title>
+    <script src="../js/libs/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function cargarOpciones() {
+                $.ajax({
+                    url: '../ObtenerOpciones',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log('Respuesta del servidor:'); //(No esta recibiendo los datos)
+                        var select = $('#editorial');
+                        select.empty(); // Limpia las opciones actuales
+                        $.each(data, function(index, item) {
+                            select.append($('<option>', { 
+                                value: item.id,
+                                text: item.nombre 
+                            }));
+                        });
+                    },
+                    error: function() {
+                        alert('Error al cargar las opciones');
+                        
+                    }
+                });
+            }
+            //falta cargar el value y el name que va tener la etiqueta al momento de cargarse cada una
+            cargarOpciones();  // Llama a la función para cargar las opciones
+            // También puedes llamar a `cargarOpciones()` en otros eventos si es necesario
+        });
+    </script>
     <style>
         label {
             display: block;
@@ -50,15 +80,15 @@
                 <option value="Leyendo">Leyendo</option>
                 <option value="Leido">Leido</option>
             </select>
-            <label for="estado">Formato:</label>
-            <select id="estado" name="formato" required>
+            <label for="formato">Formato:</label>
+            <select id="formato" name="formato" required>
                 <option value="Tapa dura">Tapa dura</option>
                 <option value="Tapa blanda">Tapa blanda</option>
                 <option value="Electronico">Electronico</option>
             </select>
             <label for="editorial">Editorial:</label>
             <select id="editorial" name="editorial" required>
-                <option value="Tapa dura">Tapa dura</option>
+                <!-- Cargue de opciones  -->
             </select>
 
             <label for="fecha">Fecha:</label>

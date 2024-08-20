@@ -2,10 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controlador;
+package controlador.persona;
 
-import conexion.Conexion;
-import java.sql.ResultSet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,17 +11,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelo.Usuario;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "CerrarSesion", urlPatterns = {"/CerrarSesion"})
+public class CerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,42 +33,8 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            
-            Usuario p  = new Usuario();
-            p.setEmail(request.getParameter("correo"));
-            p.setContrasena(request.getParameter("password"));
-            Conexion conexion = new Conexion();
-            ResultSet r =conexion.consultar(p.credenciales());
-            
-            try {
-                if (r.next()){
-                    conexion.cerrar();
-                    Usuario.user=p.getEmail();
-                    response.sendRedirect("inicio/home.jsp");
-                } else {
-                    conexion.cerrar();
-                    out.print("No se encontro el usuario");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            /*
-            Conexion conexion = new Conexion();
-            ResultSet r = conexion.consultar("SELECT titulo,nPaginas,idioma from libro");
-            try {
-                while(r.next()){
-                    String titulo = r.getString("titulo");
-                    int nPaginas = r.getInt("nPaginas");
-                    String idioma = r.getString("idioma");
-                    
-                    out.print(titulo + nPaginas + idioma);
-                }
-                r.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            conexion.cerrar();
-            */
+            Usuario.user = null;
+            response.sendRedirect("index.jsp");
         }
     }
 

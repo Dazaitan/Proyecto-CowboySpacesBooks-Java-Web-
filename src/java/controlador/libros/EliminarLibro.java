@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controlador;
+package controlador.libros;
 
+import conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,14 +12,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import modelo.Libro;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "CerrarSesion", urlPatterns = {"/CerrarSesion"})
-public class CerrarSesion extends HttpServlet {
+@WebServlet(name = "EliminarLibro", urlPatterns = {"/EliminarLibro"})
+public class EliminarLibro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +34,12 @@ public class CerrarSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            Usuario.user = null;
-            response.sendRedirect("index.jsp");
+            request.setCharacterEncoding("UTF-8");
+            Conexion conexion = new Conexion();
+            Libro libro = new Libro();
+            libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
+            
+            conexion.insertarActualizarEliminar(libro.eliminarLibro());
         }
     }
 

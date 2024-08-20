@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controlador;
+package controlador.libros;
 
 import conexion.Conexion;
+import jakarta.resource.cci.ResultSet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,23 +13,19 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDate;
 import modelo.Libro;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "ActualizarLibro", urlPatterns = {"/ActualizarLibro"})
-public class ActualizarLibro extends HttpServlet {
+@WebServlet(name = "ConsultaLibros", urlPatterns = {"/ConsultaLibros"})
+public class ConsultaLibros extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
-     *Servlet(name = "ActualizarLibro", urlPatterns = {"/ActualizarLibro"})
-public class ActualizarLibro extends HttpServlet {
-
-    /**
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -38,21 +35,10 @@ public class ActualizarLibro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             request.setCharacterEncoding("UTF-8");
             Conexion conexion = new Conexion();
+            ResultSet r = (ResultSet) conexion.consultar("Select * from libro");
             Libro libro = new Libro();
-            libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
-            libro.setTitulo(request.getParameter("titulo"));
-            libro.setnPaginas(Integer.parseInt(request.getParameter("numPaginas")));
-            libro.setCategoria(request.getParameter("categoria"));
-            libro.setDescripcion(request.getParameter("descripcion"));
-            libro.setEstado(request.getParameter("estado"));
-            libro.setIdioma(request.getParameter("idioma"));
-            libro.setFecha(LocalDate.parse(request.getParameter("fecha")));
-            
-            conexion.insertarActualizarEliminar(libro.actualizarLibro());
-            conexion.cerrar();
         }
     }
 

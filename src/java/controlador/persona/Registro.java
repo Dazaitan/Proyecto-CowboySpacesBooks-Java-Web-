@@ -1,9 +1,12 @@
+package controlador.persona;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controlador;
 
+
+import conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,13 +14,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import modelo.Usuario;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "Editoriales", urlPatterns = {"/Editoriales"})
-public class Editoriales extends HttpServlet {
+@WebServlet(name = "Registro", urlPatterns = {"/RegistroUsuario"})
+public class Registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,15 +37,21 @@ public class Editoriales extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Editoriales</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Editoriales at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            request.setCharacterEncoding("UTF-8");
+            out.println("Usuario registrado");
+            Usuario user = new Usuario();
+            user.setIdentificacion(Integer.parseInt(request.getParameter("identificacion")));
+            user.setNombre(request.getParameter("nombre"));
+            user.setApellido(request.getParameter("apellido"));
+            user.setEmail(request.getParameter("email"));
+            user.setContrasena(request.getParameter("contrasena"));
+            String insercion = "INSERT INTO usuario (identificacion,nombre,apellido,email,contrasena) values ('"+user.getIdentificacion()+"','"+user.getNombre()+"','"+user.getApellido()+"','"+user.getEmail()+"',md5('"+user.getContrasena()+"'))";
+            
+            Conexion conexion = new Conexion();
+            conexion.insertarActualizarEliminar(insercion);
+            conexion.cerrar();
+            response.sendRedirect("index.jsp");
+            
         }
     }
 

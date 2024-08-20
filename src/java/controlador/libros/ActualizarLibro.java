@@ -1,10 +1,8 @@
-package controlador;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
+package controlador.libros;
 
 import conexion.Conexion;
 import java.io.IOException;
@@ -14,19 +12,23 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import java.time.LocalDate;
+import modelo.Libro;
 
 /**
  *
  * @author Jhonk
  */
-@WebServlet(name = "Registro", urlPatterns = {"/RegistroUsuario"})
-public class Registro extends HttpServlet {
+@WebServlet(name = "ActualizarLibro", urlPatterns = {"/ActualizarLibro"})
+public class ActualizarLibro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
-     *
+     *Servlet(name = "ActualizarLibro", urlPatterns = {"/ActualizarLibro"})
+public class ActualizarLibro extends HttpServlet {
+
+    /**
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -38,20 +40,19 @@ public class Registro extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             request.setCharacterEncoding("UTF-8");
-            out.println("Usuario registrado");
-            Usuario user = new Usuario();
-            user.setIdentificacion(Integer.parseInt(request.getParameter("identificacion")));
-            user.setNombre(request.getParameter("nombre"));
-            user.setApellido(request.getParameter("apellido"));
-            user.setEmail(request.getParameter("email"));
-            user.setContrasena(request.getParameter("contrasena"));
-            String insercion = "INSERT INTO usuario (identificacion,nombre,apellido,email,contrasena) values ('"+user.getIdentificacion()+"','"+user.getNombre()+"','"+user.getApellido()+"','"+user.getEmail()+"',md5('"+user.getContrasena()+"'))";
-            
             Conexion conexion = new Conexion();
-            conexion.insertarActualizarEliminar(insercion);
-            conexion.cerrar();
-            response.sendRedirect("index.jsp");
+            Libro libro = new Libro();
+            libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
+            libro.setTitulo(request.getParameter("titulo"));
+            libro.setnPaginas(Integer.parseInt(request.getParameter("numPaginas")));
+            libro.setCategoria(request.getParameter("categoria"));
+            libro.setDescripcion(request.getParameter("descripcion"));
+            libro.setEstado(request.getParameter("estado"));
+            libro.setIdioma(request.getParameter("idioma"));
+            libro.setFecha(LocalDate.parse(request.getParameter("fecha")));
             
+            conexion.insertarActualizarEliminar(libro.actualizarLibro());
+            conexion.cerrar();
         }
     }
 
