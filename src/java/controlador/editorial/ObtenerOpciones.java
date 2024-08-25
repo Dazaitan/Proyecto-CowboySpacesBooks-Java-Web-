@@ -32,7 +32,7 @@ public class ObtenerOpciones extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             while (r.next()) {
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("NIT", r.getLong("nit"));
+                jsonObject.put("id", r.getLong("nit"));
                 jsonObject.put("nombre", r.getString("nombre"));
                 jsonArray.put(jsonObject);
             }

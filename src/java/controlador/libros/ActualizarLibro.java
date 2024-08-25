@@ -44,6 +44,8 @@ public class ActualizarLibro extends HttpServlet {
             Libro libro = new Libro();
             libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
             libro.setTitulo(request.getParameter("titulo"));
+            libro.setAutorId(Integer.valueOf(request.getParameter("autor")));
+            libro.setEditorial(Integer.valueOf(request.getParameter("editorial")));
             libro.setnPaginas(Integer.parseInt(request.getParameter("numPaginas")));
             libro.setCategoria(request.getParameter("categoria"));
             libro.setDescripcion(request.getParameter("descripcion"));

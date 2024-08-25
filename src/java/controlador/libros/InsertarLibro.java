@@ -40,6 +40,9 @@ public class InsertarLibro extends HttpServlet {
             Libro libro = new Libro();
             libro.setIsbn(Long.parseLong(request.getParameter("isbn")));
             libro.setTitulo(request.getParameter("titulo"));
+            libro.setAutorId(Integer.valueOf(request.getParameter("autor")));
+            libro.setEditorial(Integer.valueOf(request.getParameter("editorial")));
+            //Esta capturando un String
             libro.setnPaginas(Integer.parseInt(request.getParameter("numPaginas")));
             libro.setCategoria(request.getParameter("categoria"));
             libro.setDescripcion(request.getParameter("descripcion"));
@@ -47,7 +50,8 @@ public class InsertarLibro extends HttpServlet {
             libro.setIdioma(request.getParameter("idioma"));
             libro.setFecha(LocalDate.parse(request.getParameter("fecha")));
             libro.setPortada(request.getParameter("portada"));
-            
+            //out.print(libro.getEditorial());
+            //out.print(libro.getEditorial());
             conexion.insertarActualizarEliminar(libro.insertarLibroNuevo());
             conexion.cerrar();
         }

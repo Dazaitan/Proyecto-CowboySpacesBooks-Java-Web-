@@ -12,8 +12,8 @@ import java.time.LocalDate;
  */
 public class Libro {
     long isbn;
-    int nPaginas;
-    String titulo,idioma,descripcion,categoria,estado,portada;
+    int nPaginas,autorId,editorial;
+    String titulo,idioma,descripcion,categoria,estado,portada,nombreAutor;
     LocalDate fecha;
 
     public Libro() {
@@ -101,16 +101,40 @@ public class Libro {
     public void setPortada(String portada) {
         this.portada = portada;
     }
+
+    public int getAutorId() {
+        return autorId;
+    }
+
+    public void setAutorId(int autorId) {
+        this.autorId = autorId;
+    }
+
+    public String getNombreAutor() {
+        return nombreAutor;
+    }
+
+    public void setNombreAutor(String nombreAutor) {
+        this.nombreAutor = nombreAutor;
+    }
+
+    public int getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(int editorial) {
+        this.editorial = editorial;
+    }
     
     public String consultarLibro(){
         return "Select * from libro";
     }
     public String insertarLibroNuevo(){
-        String consulta = "Insert into libro (ISBN,nPaginas,titulo,idioma,descripcion,categoria,estado,anoPublicacion,portada) VALUES ('"+getIsbn()+"','"+getnPaginas()+"','"+getTitulo()+"','"+getIdioma()+"','"+getDescripcion()+"','"+getCategoria()+"','"+getEstado()+"','"+getFecha()+"','"+getPortada()+"');";
+        String consulta = "Insert into libro (ISBN,nPaginas,titulo,idioma,descripcion,categoria,estado,anoPublicacion,portada,fk_edi_nit,fk_autor_id) VALUES ('"+getIsbn()+"','"+getnPaginas()+"','"+getTitulo()+"','"+getIdioma()+"','"+getDescripcion()+"','"+getCategoria()+"','"+getEstado()+"','"+getFecha()+"','"+getPortada()+"','"+getEditorial()+"','"+getAutorId()+"');";
         return consulta;
     }
     public String actualizarLibro(){
-        String sql = "Update libro set nPaginas='"+getnPaginas()+"',titulo='"+getTitulo()+"',idioma='"+getIdioma()+"',descripcion='"+getDescripcion()+"',categoria='"+getCategoria()+"',estado='"+getEstado()+"',anoPublicacion='"+getFecha()+"'WHERE isbn='"+getIsbn()+"'";
+        String sql = "Update libro set nPaginas='"+getnPaginas()+"',titulo='"+getTitulo()+"',idioma='"+getIdioma()+"',descripcion='"+getDescripcion()+"',categoria='"+getCategoria()+"',estado='"+getEstado()+"',anoPublicacion='"+getFecha()+"',fk_edi_nit='"+getEditorial()+"',fk_autor_id='"+getAutorId()+"' WHERE ISBN='"+getIsbn()+"';";
         return sql;
     }
     public String eliminarLibro(){

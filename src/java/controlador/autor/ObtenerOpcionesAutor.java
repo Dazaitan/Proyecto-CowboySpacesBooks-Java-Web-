@@ -37,7 +37,7 @@ public class ObtenerOpcionesAutor extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             while (r.next()) {
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("ID", r.getLong("autor_id"));
+                jsonObject.put("id", r.getLong("autor_id"));
                 jsonObject.put("nombre", r.getString("nombre"));
                 jsonArray.put(jsonObject);
             }

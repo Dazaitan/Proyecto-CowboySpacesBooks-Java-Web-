@@ -11,6 +11,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Actualizar libro</title>
+        <script src="../js/libs/jquery/jquery.min.js"></script>
+        <script src="js/script.js"></script>
         <style>
         label {
             display: block;
@@ -34,7 +36,12 @@
 
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="titulo" required>
-
+            
+            <label for="autor">Autor:</label>
+            <select id="autor" name="autor" required>
+                <!-- Cargue de opciones  -->
+            </select>
+            
             <label for="idioma">Idioma:</label>
             <input type="text" id="idioma" name="idioma" required>
 
@@ -56,11 +63,15 @@
                 <option value="Tapa blanda">Tapa blanda</option>
                 <option value="Electronico">Electronico</option>
             </select>
+            <label for="editorial">Editorial:</label>
+            <select id="editorial" name="editorial" required>
+                <!-- Cargue de opciones  -->
+            </select>
 
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
 
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Actualizar">
         </form>
     </body>
 </html>
