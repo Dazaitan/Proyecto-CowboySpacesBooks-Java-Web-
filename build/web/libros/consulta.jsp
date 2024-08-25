@@ -11,6 +11,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Eliminar libro</title>
+        <script src="../js/libs/jquery/jquery.min.js"></script>
+        <script src="js/script.js"></script>
     </head>
     <style>
         label {

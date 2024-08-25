@@ -18,15 +18,53 @@ $(document).ready(function() {
                         +'<td class="field fecha_anadido">'+item.FechaAgregacion+'</td>';
                 tbody.append(datos);
                 });
-                
             },
             error: function() {
                 alert('Error al cargar las opciones');
+            }
+        });
+    }
+    function cargarEstanterias() {
+        $.ajax({
+            url: '../ObtenerEstanterias',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var ul = $('.estanterias');
+                $.each(data, function(index, item){
+                    var datos = '<li class="estOpcion" value "'+item.Id+'">' +  item.nombre + '</li>';
+                ul.append(datos);
+                });
+                
+            },
+            error: function() {
+                alert('Error al cargar las estanterias');
 
             }
         });
     }
     //falta cargar el value y el name que va tener la etiqueta al momento de cargarse cada una
-    cargarLibros();  // Llama a la función para cargar los libros
-});
+    cargarLibros();
+    cargarEstanterias();// Llama a la función para cargar los libros
+    const openModal = document.getElementById('OpenModalAnadirEstanteria');
+    const closeModal = document.getElementById('closeModal');
+    const modal = document.getElementById('myDialog');
 
+    if (openModal && closeModal && modal) {
+        openModal.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        });
+
+        modal.addEventListener('click', (event) => {
+            const rect = modal.getBoundingClientRect();
+            if (!(event.clientX >= rect.left && event.clientX <= rect.right &&
+                  event.clientY >= rect.top && event.clientY <= rect.bottom)) {
+                modal.close();
+            }
+        });
+    }
+});

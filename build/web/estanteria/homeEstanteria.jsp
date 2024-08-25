@@ -16,12 +16,9 @@
                 <div class="col-3 align-items-center ladoIzquierdo">
                     <p style="font-size: 20px; margin-left: 70px;">Estanteria</p>
                     <ul class="estanterias">
-                        <li class="estOpcion">Todas</li>
-                        <li class="estOpcion">Leido</li>
-                        <li class="estOpcion">Leyendo actualmente</li>
-                        <li class="estOpcion">Quiero leer</li>
+                        <!<!-- Opciones de estanterias -->
                     </ul>
-                    <button>Añadir estanteria</button>
+                    <button class="btn btn-outline-secondary" id="OpenModalAnadirEstanteria" type="button" >Añadir estanteria</button>
                     <br>
                     <hr style="width: 180px; margin-left: 70px;" size="5px">
                     <p style="font-size: 20px; margin-left: 70px;">Tu actividad de lectura</p>
@@ -59,5 +56,21 @@
                 </div>
             </div>
         </div>
+        <dialog id="myDialog">
+            <form action="../CrearEstanteria" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                </div>
+                <div class="dialog-footer">
+                    <button type="submit" class="btn btn-outline-success">Enviar</button>
+                    <button type="button" class="btn btn-outline-success" id="closeModal">Cancelar</button>
+                </div>
+            </form>
+        </dialog>
     </body>
 </html>
