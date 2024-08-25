@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Ingresar Datos del Libro</title>
     <script src="../js/libs/jquery/jquery.min.js"></script>
-    <script src="js/crear.js"></script>
+    <script src="js/script.js"></script>
     <style>
         label {
             display: block;
@@ -39,7 +39,10 @@
 
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="titulo" required>
-
+            <label for="autor">Autor:</label>
+            <select id="autor" name="autor" required>
+                <!-- Cargue de opciones  -->
+            </select>
             <label for="idioma">Idioma:</label>
             <input type="text" id="idioma" name="idioma" required>
 
