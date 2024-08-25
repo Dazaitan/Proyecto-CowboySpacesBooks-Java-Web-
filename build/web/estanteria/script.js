@@ -8,7 +8,7 @@ $(document).ready(function() {
                 var tbody = $('.bookBody');
                 $.each(data, function(index, item){
                     var datos = '<tr>' +
-                        '<td class="field portada"><a href="#"><img src="'+item.portada+'"></a></td>'
+                        '<td class="field portada"><a href="#" onclick="enviarId()" value="'+item.isbn+'"><img src="'+item.portada+'"></a></td>'
                         +'<td class="field titulo">'+item.titulo+'</td>'
                         +'<td class="field autor">'+item.autor+'</td>'
                         +'<td class="field calificacion">'+item.calificacion+'</td>'

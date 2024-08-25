@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.formulario-libro {
+    max-width: 600px;
+    margin: 0 auto; /* Centrar el formulario */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-libro label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.formulario-libro input[type="text"],
+.formulario-libro input[type="number"],
+.formulario-libro input[type="date"],
+.formulario-libro select,
+.formulario-libro textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formulario-libro textarea {
+    resize: vertical; /* Permitir redimensionar solo en vertical */
+}
+
+.formulario-libro input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Centrar el botón */
+    font-size: 16px;
+}
+
+.formulario-libro input[type="submit"]:hover {
+    background-color: #218838;
+}

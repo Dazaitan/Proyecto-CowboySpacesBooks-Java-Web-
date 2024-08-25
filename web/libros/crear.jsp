@@ -13,6 +13,7 @@
     <title>Ingresar Datos del Libro</title>
     <script src="../js/libs/jquery/jquery.min.js"></script>
     <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/estilos.css"> 
     <style>
         label {
             display: block;
@@ -27,7 +28,7 @@
     <body>
         <%@include file="../navBar/menu.html" %>
         <h2>Ingresar Datos del Libro</h2>
-        <form action="../InsertarLibro" method="post">
+        <form class="formulario-libro" action="../InsertarLibro" method="post">
             <label for="isbn">ISBN:</label>
             <input type="text" id="isbn" name="isbn" required>
             

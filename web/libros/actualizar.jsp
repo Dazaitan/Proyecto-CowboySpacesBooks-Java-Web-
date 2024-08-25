@@ -13,6 +13,7 @@
         <title>Actualizar libro</title>
         <script src="../js/libs/jquery/jquery.min.js"></script>
         <script src="js/script.js"></script>
+        <link rel="stylesheet" href="css/estilos.css"> 
         <style>
         label {
             display: block;
@@ -27,7 +28,7 @@
     <body>
         <%@include file="../navBar/menu.html" %>
         <h2>Actualizacion de datos - Libros</h2>
-        <form action="../ActualizarLibro" method="post">
+        <form class="formulario-libro" action="../ActualizarLibro" method="post">
             <label for="isbn">ingrese el ISBN del libro para actualizar:</label>
             <input type="text" id="isbn" name="isbn" required>
 
