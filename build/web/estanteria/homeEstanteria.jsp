@@ -13,8 +13,8 @@
         <div class="container">
             <h2 style="font-weight: 500; text-align: center;">Mis libros</h2>
             <div class="row h-100">
-                <div class="col-3 align-items-center ladoIzquierdo">
-                    <p style="font-size: 20px; margin-left: 70px;">Estanteria</p>
+                <div class="col-3 align-items-center text-center ladoIzquierdo">
+                    <p style="font-size: 20px;">Estanteria</p>
                     <ul class="estanterias">
                         <!<!-- Opciones de estanterias -->
                     </ul>

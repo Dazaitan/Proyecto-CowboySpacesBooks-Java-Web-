@@ -56,3 +56,9 @@ input[type="text"], textarea {
 .dialog-footer {
     text-align: right;
 }
+.estOpcion{
+    list-style: none;
+}
+.estanterias{
+    padding-left: 0px;
+}

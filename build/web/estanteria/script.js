@@ -32,7 +32,7 @@ $(document).ready(function() {
             success: function(data) {
                 var ul = $('.estanterias');
                 $.each(data, function(index, item){
-                    var datos = '<li class="estOpcion" value "'+item.Id+'">' +  item.nombre + '</li>';
+                    var datos = '<li class="estOpcion" value "'+item.Id+'"><a href="">' +  item.nombre + '</a></li>';
                 ul.append(datos);
                 });
                 

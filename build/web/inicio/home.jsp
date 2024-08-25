@@ -26,7 +26,7 @@
         <h1>Bienvenido al sistema de gestion de libros</h1>
         <div class="container-fluid full-height">
             <div class="row h-100">
-                <div class="col-3 align-items-center align-items-center ladoIzquierdo" style="background-color">
+                <div class="col-3 align-items-center text-center ladoIzquierdo" style="background-color">
                     <p class="subtitulo">Actualmente estas leyendo</p>
                     <div class="portadaActual">
                         <img src="../img/portada-almendra.jpg" class="imgPortada">
@@ -42,7 +42,7 @@
                         <input class="item" type="number" style="height: 30px;width: 35px"><br>
                     </div>
                     <br>
-                    <button>Empieza ya</button>
+                    <button class="btn btn-outline-secondary">Empieza ya</button>
                     <hr>
                     <p class="subtitulo">Quiero leer</p>
                     <div class="imgQuieroLeer">
