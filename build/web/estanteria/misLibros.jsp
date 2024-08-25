@@ -11,6 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="estilos.css">
+        <script src="../js/libs/jquery/jquery.min.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
         <%@include file="../navBar/menu.html" %>
@@ -49,14 +51,15 @@
                             </tr>
                         </thead>
                         <tbody class="bookBody">
-                            <td class="field portada"><a href="#"><img src="../img/Almendra.png"></a></td>
+                            <!--<td class="field portada"><a href="#"><img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1616927575i/57551565.jpg"></a></td>
                             <td class="field titulo">Almendra</td>
                             <td class="field autor">Sohn Won-Pyung</td>
                             <td class="field calificacion">iframe</td>
                             <td class="field estanteria">Leido</td>
                             <td class="field reseña">Escribe una reseña</td>
                             <td class="field fecha_lectura">Mar 31, 2024</td>
-                            <td class="field fecha_anadido">Mar 31, 2024</td>
+                            <td class="field fecha_anadido">Mar 31, 2024</td> -->
+                            
                         </tbody>
                     </table>
                 </div>

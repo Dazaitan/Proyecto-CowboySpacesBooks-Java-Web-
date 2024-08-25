@@ -32,14 +32,16 @@ public class GetConsultaLibros extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             Conexion conexion = new Conexion();
-            ResultSet r =conexion.consultar("SELECT libro.titulo as titulo,listas.nameList as listName, autor.nombre as autor,editorial.nombre as editorial,editorial.NIT as nit, rel_listas_libros.fechaAgregacion as fecha_Agregacion FROM libro INNER JOIN rel_listas_libros ON libro.ISBN=rel_listas_libros.fk_rel_libro_isbn INNER JOIN listas on rel_listas_libros.fk_rel_lista_Id =listas.lista_Id INNER JOIN autor on autor.autor_Id=libro.fk_autor_Id INNER JOIN editorial on editorial.NIT=libro.fk_edi_nit");
+            ResultSet r =conexion.consultar("SELECT libro.calificacion as calificacion, libro.portada as portada, libro.titulo as titulo,listas.nameList as listName, autor.nombre as autor,editorial.nombre as editorial,editorial.NIT as nit, rel_listas_libros.fechaAgregacion as fecha_Agregacion FROM libro INNER JOIN rel_listas_libros ON libro.ISBN=rel_listas_libros.fk_rel_libro_isbn INNER JOIN listas on rel_listas_libros.fk_rel_lista_Id =listas.lista_Id INNER JOIN autor on autor.autor_Id=libro.fk_autor_Id INNER JOIN editorial on editorial.NIT=libro.fk_edi_nit");
             JSONArray jsonArray = new JSONArray();
             while (r.next()) {
                 JSONObject jsonObject = new JSONObject();
+                jsonObject.put("portada", r.getString("portada"));
+                jsonObject.put("calificacion", r.getFloat("calificacion"));
+                jsonObject.put("titulo", r.getString("titulo"));
+                jsonObject.put("autor", r.getString("autor"));
                 jsonObject.put("NIT", r.getLong("nit"));
-                jsonObject.put("Titulo", r.getString("titulo"));
                 jsonObject.put("Lista", r.getString("listName"));
-                jsonObject.put("Autor", r.getString("autor"));
                 jsonObject.put("Editorial", r.getString("editorial"));
                 jsonObject.put("FechaAgregacion", r.getString("fecha_Agregacion"));
                 jsonArray.put(jsonObject);
