@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse; /* Opcional: Elimina el espacio entre bordes */
+    width: 100%;
+}
+th, td {
+    padding: 10px; /* Espaciado interno de las celdas */
+    border: 1px solid #ddd; /* Bordes opcionales */
+}
+thead {
+    border-bottom: 2px solid #000; /* Línea de 2px debajo del thead */
+}
+img {
+    height: 140px; 
+    width: 90px;
+}

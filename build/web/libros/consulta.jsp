@@ -1,6 +1,6 @@
 <%-- 
-    Document   : consultaLibros
-    Created on : 7 ago 2024, 11:54:10
+    Document   : eliminar
+    Created on : 7 ago 2024, 11:55:14
     Author     : Jhonk
 --%>
 
@@ -10,10 +10,20 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar libro</title>
+        <title>Eliminar libro</title>
     </head>
+    <style>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
     <body>
         <%@include file="../navBar/menu.html" %>
-        <h1>Hello World!</h1>
+        <form action="../ConsultaLibros" method="POST">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" required>
+        <input type="submit" value="Enviar">
+        </form>
     </body>
 </html>

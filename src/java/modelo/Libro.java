@@ -13,13 +13,13 @@ import java.time.LocalDate;
 public class Libro {
     long isbn;
     int nPaginas;
-    String titulo,idioma,descripcion,categoria,estado;
+    String titulo,idioma,descripcion,categoria,estado,portada;
     LocalDate fecha;
 
     public Libro() {
     }
 
-    public Libro(long isbn, int nPaginas, String titulo, String idioma, String descripcion, String categoria, String estado, LocalDate fecha) {
+    public Libro(long isbn, int nPaginas, String titulo, String idioma, String descripcion, String categoria, String estado, LocalDate fecha, String portada) {
         this.isbn = isbn;
         this.nPaginas = nPaginas;
         this.titulo = titulo;
@@ -28,6 +28,7 @@ public class Libro {
         this.categoria = categoria;
         this.estado = estado;
         this.fecha = fecha;
+        this.portada =portada;
     }
 
     public long getIsbn() {
@@ -93,12 +94,19 @@ public class Libro {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+    public String getPortada() {
+        return portada;
+    }
+
+    public void setPortada(String portada) {
+        this.portada = portada;
+    }
     
     public String consultarLibro(){
         return "Select * from libro";
     }
     public String insertarLibroNuevo(){
-        String consulta = "Insert into libro (ISBN,nPaginas,titulo,idioma,descripcion,categoria,estado,anoPublicacion) VALUES ('"+getIsbn()+"','"+getnPaginas()+"','"+getTitulo()+"','"+getIdioma()+"','"+getDescripcion()+"','"+getCategoria()+"','"+getEstado()+"','"+getFecha()+"');";
+        String consulta = "Insert into libro (ISBN,nPaginas,titulo,idioma,descripcion,categoria,estado,anoPublicacion,portada) VALUES ('"+getIsbn()+"','"+getnPaginas()+"','"+getTitulo()+"','"+getIdioma()+"','"+getDescripcion()+"','"+getCategoria()+"','"+getEstado()+"','"+getFecha()+"','"+getPortada()+"');";
         return consulta;
     }
     public String actualizarLibro(){

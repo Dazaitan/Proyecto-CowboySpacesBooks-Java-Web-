@@ -46,6 +46,7 @@ public class InsertarLibro extends HttpServlet {
             libro.setEstado(request.getParameter("estado"));
             libro.setIdioma(request.getParameter("idioma"));
             libro.setFecha(LocalDate.parse(request.getParameter("fecha")));
+            libro.setPortada(request.getParameter("portada"));
             
             conexion.insertarActualizarEliminar(libro.insertarLibroNuevo());
             conexion.cerrar();

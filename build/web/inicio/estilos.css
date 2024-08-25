@@ -1,0 +1,55 @@
+.full-height {
+    height: 87vh;
+}
+            
+.color3 {
+    background-color: #ff9999; /* Color rojo claro */
+}
+.color2 {
+    background-color: #99ccff; /* Color azul claro */
+}
+.color1 {
+    background-color: #99ff99; /* Color verde claro */
+}
+.imgPortada {
+    height: 140px;
+    width: 90px;
+    margin: 30px;
+}
+.portadaActual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subtitulo{
+    font-size: 20px;
+    text-align: center;
+}
+.reto {
+    display: flex;
+    align-items: center;
+}
+.item {
+    margin-left: 10px;
+}
+.imgLeer{
+    height: 140px;
+    width: 90px;
+    margin: 5px;
+}
+.imgQuieroLeer {
+    align-items: center;
+    justify-content: center;
+}
+.socialInteraction{
+    list-style-type: none; 
+    display: flex; 
+    justify-content: space-between;
+}
+.socialInteraction li {
+    border:1px;
+    padding:5px 10px;
+}
+.recomendationCustom{
+    display: inline-flex;
+}

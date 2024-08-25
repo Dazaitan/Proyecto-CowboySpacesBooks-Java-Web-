@@ -58,7 +58,10 @@
         <form action="../InsertarLibro" method="post">
             <label for="isbn">ISBN:</label>
             <input type="text" id="isbn" name="isbn" required>
-
+            
+            <label for="editorial">Portada (URL):</label>
+            <textarea id="portada" name="portada" rows="4" cols="50" required></textarea>
+            
             <label for="numPaginas">Número de Páginas:</label>
             <input type="number" id="numPaginas" name="numPaginas" required>
 
@@ -93,7 +96,7 @@
 
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
-
+            
             <input type="submit" value="Enviar">
         </form>
     </body>
